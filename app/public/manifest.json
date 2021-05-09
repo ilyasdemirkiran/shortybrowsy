@@ -1,0 +1,13 @@
+{
+  "name": "Shorty Browsy",
+  "description": "The easiest way of browsing with shortcuts",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Shorty Browsy"
+  },
+  "permissions": [
+    "activeTab"
+  ]
+}

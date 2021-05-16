@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {ChakraProvider, extendTheme} from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { MemoryRouter } from "react-router-dom";
 
 let theme = extendTheme({
-	colors : {
+	colors: {
 
 	},
 	fonts: {
@@ -16,9 +17,11 @@ let theme = extendTheme({
 
 ReactDOM.render(
 	<React.StrictMode>
-		<ChakraProvider theme={theme}>
-			<App/>
-		</ChakraProvider>
+		<MemoryRouter>
+			<ChakraProvider theme={theme}>
+				<App />
+			</ChakraProvider>
+		</MemoryRouter>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

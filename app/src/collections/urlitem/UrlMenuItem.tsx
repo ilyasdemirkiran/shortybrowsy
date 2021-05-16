@@ -1,4 +1,4 @@
-import {UrlItem} from "../../models/UrlItem";
+import { UrlItem } from "../../models/UrlItem";
 import {
 	Center,
 	FormControl,
@@ -12,34 +12,31 @@ import {
 	ModalOverlay,
 	SimpleGrid,
 	Text,
-	useDisclosure
+	useDisclosure,
+	VStack
 } from "@chakra-ui/react";
-import React, {useCallback} from "react";
-import {useHotkeys} from "react-hotkeys-hook";
-import {FocusableElement} from "@chakra-ui/utils";
-
+import React, { useCallback } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
+import { FocusableElement } from "@chakra-ui/utils";
 
 interface UrlItemProps {
 	item: UrlItem,
 	keys: string
 }
 
-function UrlMenuItem({item, keys}: UrlItemProps) {
-	const {isOpen, onOpen, onClose} = useDisclosure();
+function UrlMenuItem({ item, keys }: UrlItemProps) {
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	useHotkeys(`e+${keys}`, (event) => {
-		// if e+1 opens the edit, then 1 will be added to the first field.
-		// which is not what we want
-		event.preventDefault(); // Do NOT delete.
 		onOpen();
-	});
+	}, { filterPreventDefault: true });
 
 	useHotkeys(keys, () => {
 		if (isOpen) {
 			return;
 		}
 		window.open(item.url, "_blank");
-	}, {}, [isOpen]);
+	}, { filterPreventDefault: true }, [isOpen]);
 
 	return (
 		<>
@@ -52,16 +49,16 @@ function UrlMenuItem({item, keys}: UrlItemProps) {
 				</Center>
 			</Link>
 			<Modal isOpen={isOpen} onClose={onClose} isCentered>
-				<ModalOverlay/>
+				<ModalOverlay />
 				<ModalContent>
 					<SimpleGrid p={2} spacingY={2} borderRadius={1}>
 						<FormControl id="url">
 							<FormLabel>Url</FormLabel>
-							<Input defaultValue={item.url}/>
+							<Input defaultValue={item.url} />
 						</FormControl>
 						<FormControl id="text">
 							<FormLabel>Item Text</FormLabel>
-							<Input defaultValue={item.linkText}/>
+							<Input defaultValue={item.linkText} />
 						</FormControl>
 					</SimpleGrid>
 				</ModalContent>

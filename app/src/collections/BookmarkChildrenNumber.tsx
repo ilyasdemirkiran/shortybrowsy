@@ -1,4 +1,4 @@
-import { Box, Center, Circle, Text } from "@chakra-ui/layout";
+import { Square } from "@chakra-ui/layout";
 import _ from "lodash";
 
 function BookmarkChildrenNumber(props: { childrenNumber: number | undefined }) {
@@ -7,9 +7,9 @@ function BookmarkChildrenNumber(props: { childrenNumber: number | undefined }) {
   }
 
   return (
-    <Circle size="25px" bg="gray.700" color="gray.200">
+    <Square size="25px" bg="gray.700" color="gray.200" borderRadius={2}>
       {`${props.childrenNumber}`}
-    </Circle>
+    </Square>
   )
 }
 

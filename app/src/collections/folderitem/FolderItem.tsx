@@ -16,8 +16,8 @@ function FolderItem(props: FolderItemProps) {
     <NavLink to={`/${folderNode.id}`}>
       <Center bg="gray.200" color="gray.700" height={10} borderRadius={2}>
         <HStack>
-          <BookmarkChildrenNumber childrenNumber={folderNode.children?.length} />
           <AiOutlineFolder />
+          <BookmarkChildrenNumber childrenNumber={folderNode.children?.length} />
           <BookmarkTitle title={folderNode.title} />
           {/* {`${folderNode.title} ${folderNode.children ? folderNode.children.length : 0}`} */}
         </HStack>

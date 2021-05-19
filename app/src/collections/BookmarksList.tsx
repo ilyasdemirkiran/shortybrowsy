@@ -13,7 +13,6 @@ export interface BookmarksListProps {
 
 function BookmarksList(props: BookmarksListProps) {
   const { id } = useParams<{ id: string | undefined }>();
-  // const { bookmarks } = props;
   const [bookmarks, setBookmarks] = useState<chrome.bookmarks.BookmarkTreeNode[] | null>();
 
   useEffect(() => {

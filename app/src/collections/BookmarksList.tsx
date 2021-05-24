@@ -1,19 +1,18 @@
-import { Button } from "@chakra-ui/button";
-import Icon from "@chakra-ui/icon";
-import { ArrowBackIcon } from "@chakra-ui/icons";
-import { Center, HStack, Kbd, Text, VStack, Link, SimpleGrid } from "@chakra-ui/layout";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
+import {SimpleGrid, Text} from "@chakra-ui/layout";
+import {useCallback, useEffect, useMemo, useState} from "react";
+import {useHistory, useParams} from "react-router";
 import FolderItem from "./folderitem/FolderItem";
 import BookmarkItem from "./urlitem/BookmarkItem";
+import BookmarkToolbar from "./BookmarkToolbar";
 
 export interface BookmarksListProps {
 }
 
 function BookmarksList(props: BookmarksListProps) {
-  const { id } = useParams<{ id: string | undefined }>();
+  const {id} = useParams<{ id: string | undefined }>();
   const [bookmarks, setBookmarks] = useState<chrome.bookmarks.BookmarkTreeNode[] | null>();
+  const parentId = useMemo(() => (bookmarks && bookmarks[0]) && bookmarks[0].parentId, [bookmarks]);
+  let history = useHistory();
 
   useEffect(() => {
     if (id) {
@@ -21,32 +20,27 @@ function BookmarksList(props: BookmarksListProps) {
     } else {
       chrome.bookmarks?.getTree(setBookmarks);
     }
-  }, [id]);
+  }, [id, bookmarks]);
+
+  let onDeleteBookmarkNode = useCallback((bookmarkId: string) => {
+    chrome.bookmarks.remove(bookmarkId);
+    setBookmarks(null);
+  }, [setBookmarks]);
 
   return (
     <SimpleGrid spacingY={2} padding={2}>
+      <BookmarkToolbar bookmarkId={id} parentId={parentId}/>
       {
-        bookmarks && (bookmarks[0].parentId ? (
-          <NavLink to={`/${bookmarks[0].parentId}`}>
-            <Center bg="gray.700" color="gray.200" height={10} borderRadius={2}>
-              <HStack>
-                <ArrowBackIcon />
-                <Text>Back</Text>
-                {/* <Kbd bgColor="gray.700">{`${keys}`}</Kbd> */}
-              </HStack>
-            </Center>
-          </NavLink>
-        ) : null)
-      }
-      {
-        bookmarks && bookmarks[0].children?.map(child => {
+        bookmarks && bookmarks[0].children?.map((child, index) => {
           if (child.url) {
-            return <BookmarkItem bookmarkNode={child} />
+            return <BookmarkItem bookmarkNode={child} keys={`${index + 1}`}
+                                 onDeleteBookmarkNode={onDeleteBookmarkNode}/>
           } else {
-            return <FolderItem folderNode={child} />
+            return <FolderItem folderNode={child} keys={`${index + 1}`}/>
           }
         })
       }
+      <Text>{id}</Text>
     </SimpleGrid>
   )
 }

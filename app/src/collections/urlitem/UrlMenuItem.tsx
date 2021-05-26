@@ -1,4 +1,4 @@
-import { UrlItem } from "../../models/UrlItem";
+import {UrlItem} from "../../models/UrlItem";
 import {
 	Center,
 	FormControl,
@@ -12,31 +12,28 @@ import {
 	ModalOverlay,
 	SimpleGrid,
 	Text,
-	useDisclosure,
-	VStack
+	useDisclosure
 } from "@chakra-ui/react";
-import React, { useCallback } from "react";
-import { useHotkeys } from "react-hotkeys-hook";
-import { FocusableElement } from "@chakra-ui/utils";
+import React from "react";
 
 interface UrlItemProps {
 	item: UrlItem,
 	keys: string
 }
 
-function UrlMenuItem({ item, keys }: UrlItemProps) {
-	const { isOpen, onOpen, onClose } = useDisclosure();
+function UrlMenuItem({item, keys}: UrlItemProps) {
+	const {isOpen, onOpen, onClose} = useDisclosure();
 
-	useHotkeys(`e+${keys}`, (event) => {
-		onOpen();
-	}, { filterPreventDefault: true });
-
-	useHotkeys(keys, () => {
-		if (isOpen) {
-			return;
-		}
-		window.open(item.url, "_blank");
-	}, { filterPreventDefault: true }, [isOpen]);
+	// useHotkeys(`e+${keys}`, (event) => {
+	// 	onOpen();
+	// }, {filterPreventDefault: true});
+	//
+	// useHotkeys(keys, () => {
+	// 	if (isOpen) {
+	// 		return;
+	// 	}
+	// 	window.open(item.url, "_blank");
+	// }, {filterPreventDefault: true}, [isOpen]);
 
 	return (
 		<>
@@ -49,16 +46,16 @@ function UrlMenuItem({ item, keys }: UrlItemProps) {
 				</Center>
 			</Link>
 			<Modal isOpen={isOpen} onClose={onClose} isCentered>
-				<ModalOverlay />
+				<ModalOverlay/>
 				<ModalContent>
 					<SimpleGrid p={2} spacingY={2} borderRadius={1}>
 						<FormControl id="url">
 							<FormLabel>Url</FormLabel>
-							<Input defaultValue={item.url} />
+							<Input defaultValue={item.url}/>
 						</FormControl>
 						<FormControl id="text">
 							<FormLabel>Item Text</FormLabel>
-							<Input defaultValue={item.linkText} />
+							<Input defaultValue={item.linkText}/>
 						</FormControl>
 					</SimpleGrid>
 				</ModalContent>

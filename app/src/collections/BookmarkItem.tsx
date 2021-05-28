@@ -24,6 +24,9 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 		if (mode === Mode.OPEN) {
 			window.open(bookmarkNode?.url, "_blank");
 		}
+		if (mode === Mode.EDIT) {
+
+		}
 		if (mode === Mode.DELETE) {
 			openDeleteModal();
 		}
@@ -38,8 +41,8 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 			<Link isExternal href={bookmarkNode.url}>
 				<BookmarkItemContainer bg="gray.800" color="gray.50">
 					<HStack>
-						<Image boxSize="24px" src={`${new URL(bookmarkNode.url).origin}/favicon.ico`}/>
-						<AiOutlineLink/>
+						<Image objectFit="cover" boxSize="24px" src={`${new URL(bookmarkNode.url).origin}/favicon.ico`}/>
+						<AiOutlineLink size={24}/>
 						<BookmarkTitle title={bookmarkNode.title}/>
 						<Text>{`${keys}`}</Text>
 					</HStack>

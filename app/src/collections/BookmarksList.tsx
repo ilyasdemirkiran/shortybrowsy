@@ -28,7 +28,7 @@ function BookmarksList(props: BookmarksListProps) {
 
 	return (
 		<SimpleGrid spacingY={2} padding={2}>
-			<BookmarkToolbar bookmarkId={id} parentId={parentId}/>
+			<BookmarkToolbar bookmarkTitle={bookmarks && bookmarks[0].title} bookmarkId={id} parentId={parentId}/>
 			{
 				bookmarks && bookmarks[0].children?.map((child, index) => {
 					if (child.url) {

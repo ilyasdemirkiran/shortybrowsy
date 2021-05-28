@@ -3,23 +3,43 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { MemoryRouter } from "react-router-dom";
+import {ChakraProvider, extendTheme} from "@chakra-ui/react";
+import {MemoryRouter} from "react-router-dom";
+
+// const theme = {
+// 	styles: {
+// 		global: (props) => ({
+// 			"html, body": {
+// 				fontSize: "sm",
+// 				color: props.colorMode === "dark" ? "white" : "gray.600",
+// 				lineHeight: "tall",
+// 			},
+// 			a: {
+// 				color: props.colorMode === "dark" ? "teal.300" : "teal.500",
+// 			},
+// 		}),
+// 	},
+// }
 
 let theme = extendTheme({
-	colors: {
-
-	},
+	colors: {},
 	fonts: {
 		body: "Mulish 100"
-	}
+	},
+	styles: {
+		global: () => ({
+			"html, body": {
+				fontSize: "md",
+			},
+		}),
+	},
 });
 
 ReactDOM.render(
 	<React.StrictMode>
 		<MemoryRouter>
 			<ChakraProvider theme={theme}>
-				<App />
+				<App/>
 			</ChakraProvider>
 		</MemoryRouter>
 	</React.StrictMode>,

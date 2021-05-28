@@ -42,9 +42,7 @@ function useProvideAppContext(): AppContext {
 
 	return {
 		mode,
-		updateMode(mode: Mode) {
-			setMode(mode)
-		}
+		updateMode: (mode: Mode) => setMode(mode)
 	}
 }
 

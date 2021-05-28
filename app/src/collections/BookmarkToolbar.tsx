@@ -63,7 +63,7 @@ function BookmarkToolbar({bookmarkId, parentId, bookmarkTitle}: BookmarkToolbarP
 		<>
 			<Grid templateColumns="repeat(3, 1fr)" gap={2} w="full" boxShadow="sm">
 				<GridItem colSpan={3}>
-					<ToolbarItem w="full">
+					<ToolbarItem w="full" bg="gray.900">
 						<HStack>
 							<IoLocationOutline size={24}/>
 							<Text>{bookmarkTitle ? bookmarkTitle : "Home"}</Text>
@@ -107,10 +107,10 @@ function BookmarkToolbar({bookmarkId, parentId, bookmarkTitle}: BookmarkToolbarP
 
 export default BookmarkToolbar;
 
-function ToolbarItem({children}: AbsoluteCenterProps) {
+function ToolbarItem({children, ...rest}: AbsoluteCenterProps) {
 
 	return (
-		<Center bg="gray.700" color="gray.200" height={20} borderRadius={4} boxShadow="md">
+		<Center bg="gray.700" color="gray.200" height={20} borderRadius={4} boxShadow="md" {...rest}>
 			{children}
 		</Center>
 	)

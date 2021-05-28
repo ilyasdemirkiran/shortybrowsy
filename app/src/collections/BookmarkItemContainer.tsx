@@ -1,14 +1,13 @@
-import {AbsoluteCenterProps} from "@chakra-ui/react";
-import {Center} from "@chakra-ui/layout";
+import {Grid, GridProps} from "@chakra-ui/react";
 
 
-function BookmarkItemContainer({children, ...rest}: AbsoluteCenterProps) {
-
-  return (
-    <Center height={20} borderRadius={4} boxShadow="md" {...rest}>
-      {children}
-    </Center>
-  )
+function BookmarkItemContainer({children, ...rest}: GridProps) {
+	return (
+		<Grid height={20} borderRadius={4} boxShadow="md" {...rest} w="full" gap={1} paddingX={1}
+		      templateColumns="repeat(6, 1fr)">
+			{children}
+		</Grid>
+	)
 }
 
 export default BookmarkItemContainer;

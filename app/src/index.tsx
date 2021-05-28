@@ -6,21 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import {ChakraProvider, extendTheme} from "@chakra-ui/react";
 import {MemoryRouter} from "react-router-dom";
 
-// const theme = {
-// 	styles: {
-// 		global: (props) => ({
-// 			"html, body": {
-// 				fontSize: "sm",
-// 				color: props.colorMode === "dark" ? "white" : "gray.600",
-// 				lineHeight: "tall",
-// 			},
-// 			a: {
-// 				color: props.colorMode === "dark" ? "teal.300" : "teal.500",
-// 			},
-// 		}),
-// 	},
-// }
-
 let theme = extendTheme({
 	colors: {},
 	fonts: {

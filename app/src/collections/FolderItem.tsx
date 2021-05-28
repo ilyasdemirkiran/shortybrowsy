@@ -6,7 +6,7 @@ import BookmarkItemContainer from "./BookmarkItemContainer";
 import {useHotkeys} from "react-hotkeys-hook";
 import {Mode, useAppContext} from "../App";
 import BookmarkGridItem from "./BookmarkGridItem";
-import {Kbd} from "@chakra-ui/react";
+import BookmarkShortcutKey from "./BookmarkShortcutKey";
 
 export interface FolderItemProps {
 	folderNode: chrome.bookmarks.BookmarkTreeNode
@@ -41,7 +41,7 @@ function FolderItem({folderNode, keys}: FolderItemProps) {
 					<BookmarkTitle title={folderNode.title}/>
 				</BookmarkGridItem>
 				<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
-					<Kbd bg="gray.50">{keys}</Kbd>
+					<BookmarkShortcutKey keys={keys}/>
 				</BookmarkGridItem>
 			</BookmarkItemContainer>
 		</NavLink>

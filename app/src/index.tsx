@@ -15,6 +15,7 @@ let theme = extendTheme({
 		global: () => ({
 			"html, body": {
 				fontSize: "md",
+				bg: "gray.50"
 			},
 		}),
 	},

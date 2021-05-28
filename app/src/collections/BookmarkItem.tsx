@@ -4,11 +4,12 @@ import {Link, Text} from "@chakra-ui/layout";
 import {AiOutlineLink} from "react-icons/ai";
 import BookmarkTitle from "./BookmarkTitle";
 import BookmarkItemContainer from "./BookmarkItemContainer";
-import {Kbd, Modal, ModalContent, ModalOverlay, SimpleGrid} from "@chakra-ui/react";
+import {Modal, ModalContent, ModalOverlay, SimpleGrid} from "@chakra-ui/react";
 import React from "react";
 import {useHotkeys} from "react-hotkeys-hook";
 import {Mode, useAppContext} from "../App";
 import BookmarkGridItem from "./BookmarkGridItem";
+import BookmarkShortcutKey from "./BookmarkShortcutKey";
 
 export interface BookmarkItemProps {
 	bookmarkNode: chrome.bookmarks.BookmarkTreeNode,
@@ -51,7 +52,7 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 						<BookmarkTitle title={bookmarkNode.title}/>
 					</BookmarkGridItem>
 					<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
-						<Kbd bg="gray.50">{keys}</Kbd>
+						<BookmarkShortcutKey keys={keys}/>
 					</BookmarkGridItem>
 				</BookmarkItemContainer>
 			</Link>

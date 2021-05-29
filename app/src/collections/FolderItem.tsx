@@ -41,7 +41,7 @@ function FolderItem({folderNode, keys}: FolderItemProps) {
 					<BookmarkTitle title={folderNode.title}/>
 				</BookmarkGridItem>
 				<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
-					<BookmarkShortcutKey keys={keys}/>
+					<BookmarkShortcutKey keys={keys} showIcon/>
 				</BookmarkGridItem>
 			</BookmarkItemContainer>
 		</NavLink>

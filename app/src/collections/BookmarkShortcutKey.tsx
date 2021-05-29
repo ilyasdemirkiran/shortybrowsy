@@ -3,10 +3,10 @@ import {MdKeyboardHide} from "react-icons/all";
 import {Kbd} from "@chakra-ui/react";
 
 
-function BookmarkShortcutKey({keys}: { keys: string }) {
+function BookmarkShortcutKey({keys, showIcon}: { keys: string, showIcon: boolean }) {
 	return (
 		<HStack>
-			<MdKeyboardHide color="gray.50" size={24}/>
+			{showIcon && <MdKeyboardHide color="gray.50" size={24}/>}
 			<Kbd>{keys}</Kbd>
 		</HStack>
 	)

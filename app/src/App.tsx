@@ -1,7 +1,7 @@
 import './App.css';
 import {Route, Switch,} from "react-router-dom";
-import BookmarksList from './collections/BookmarksList';
 import {createContext, useContext, useState} from "react";
+import BookmarksList from "./collections/BookmarksList";
 
 export enum Mode {
 	OPEN = "Open",

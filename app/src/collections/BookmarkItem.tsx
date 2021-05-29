@@ -18,6 +18,7 @@ export interface BookmarkItemProps {
 	onDeleteBookmarkNode(id: string): void
 }
 
+// Edit and Delete modes were postponed.
 function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemProps) {
 	let {mode} = useAppContext();
 	const {isOpen: isDeleteModalOpen, onOpen: openDeleteModal, onClose: closeDeleteModal} = useDisclosure();
@@ -30,7 +31,7 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 
 		}
 		if (mode === Mode.DELETE) {
-			openDeleteModal();
+			// openDeleteModal();
 		}
 	}, [keys, bookmarkNode, mode, openDeleteModal, isDeleteModalOpen, closeDeleteModal]);
 
@@ -43,16 +44,16 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 			<Link isExternal href={bookmarkNode.url}>
 				<BookmarkItemContainer bg="gray.800" color="gray.50">
 					<BookmarkGridItem colSpan={1}>
-						<Image objectFit="fill" boxSize="24px" src={`${new URL(bookmarkNode.url).origin}/favicon.ico`}/>
+						<AiOutlineLink size={24}/>
 					</BookmarkGridItem>
 					<BookmarkGridItem colSpan={1}>
-						<AiOutlineLink size={24}/>
+						<Image objectFit="fill" boxSize="24px" src={`${new URL(bookmarkNode.url).origin}/favicon.ico`}/>
 					</BookmarkGridItem>
 					<BookmarkGridItem colSpan={3}>
 						<BookmarkTitle title={bookmarkNode.title}/>
 					</BookmarkGridItem>
 					<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
-						<BookmarkShortcutKey keys={keys}/>
+						<BookmarkShortcutKey keys={keys} showIcon/>
 					</BookmarkGridItem>
 				</BookmarkItemContainer>
 			</Link>

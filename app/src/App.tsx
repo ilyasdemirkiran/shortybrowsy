@@ -22,7 +22,7 @@ const AppContext = createContext<AppContext>({
 });
 
 function App() {
-	let value = useProvideAppContext();
+	const value = useProvideAppContext();
 
 	return (
 		<AppContext.Provider value={value}>

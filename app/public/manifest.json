@@ -2,22 +2,25 @@
   "name": "Shorty Browsy",
   "description": "The easiest way of browsing with shortcuts",
   "version": "1.0",
-  "manifest_version": 3,
-  "action": {
-    "default_popup": "index.html",
-    "default_title": "Shorty Browsy"
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "Shorty Browsy",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "48": "icon32.png"
   },
   "permissions": [
     "activeTab",
     "bookmarks"
   ],
   "commands": {
-    "toggle-feature-foo": {
+    "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+1",
-        "mac": "Command+Shift+1"
+        "default": "Ctrl+Shift+1"
       },
-      "description": "Toggle feature foo"
+      "description": "OpenUp",
+      "global": false
     }
   }
 }

@@ -29,7 +29,7 @@ function BookmarksList(props: BookmarksListProps) {
 	const totalPageNumber = useMemo(() => {
 		setPageNumber(0);
 
-		return Math.round(childrenLength / 4);
+		return Math.ceil(childrenLength / 4);
 	}, [childrenLength]);
 
 	const children: chrome.bookmarks.BookmarkTreeNode[] = useMemo(() => {
@@ -75,16 +75,6 @@ function BookmarksList(props: BookmarksListProps) {
 	return (
 		<SimpleGrid spacingY={2} padding={2}>
 			<BookmarkToolbar bookmarkTitle={bookmarks && bookmarks[0].title} bookmarkId={id} parentId={parentId}/>
-			{/*{*/}
-			{/*	bookmarks && bookmarks[0].children?.map((child, index) => {*/}
-			{/*		if (child.url) {*/}
-			{/*			return <BookmarkItem bookmarkNode={child} keys={`${index + 1}`}*/}
-			{/*			                     onDeleteBookmarkNode={onDeleteBookmarkNode}/>*/}
-			{/*		} else {*/}
-			{/*			return <FolderItem folderNode={child} keys={`${index + 1}`}/>*/}
-			{/*		}*/}
-			{/*	})*/}
-			{/*}*/}
 			{
 				children.map((child, index) => {
 					if (child.url) {

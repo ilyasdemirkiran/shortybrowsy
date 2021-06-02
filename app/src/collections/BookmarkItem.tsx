@@ -43,6 +43,9 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 		<>
 			<Link isExternal href={bookmarkNode.url}>
 				<BookmarkItemContainer bg="gray.800" color="gray.50">
+					<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
+						<BookmarkShortcutKey keys={keys} showIcon={false}/>
+					</BookmarkGridItem>
 					<BookmarkGridItem colSpan={1}>
 						<AiOutlineLink size={24}/>
 					</BookmarkGridItem>
@@ -52,9 +55,7 @@ function BookmarkItem({bookmarkNode, keys, onDeleteBookmarkNode}: BookmarkItemPr
 					<BookmarkGridItem colSpan={3}>
 						<BookmarkTitle title={bookmarkNode.title}/>
 					</BookmarkGridItem>
-					<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
-						<BookmarkShortcutKey keys={keys} showIcon/>
-					</BookmarkGridItem>
+
 				</BookmarkItemContainer>
 			</Link>
 			<Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal} isCentered closeOnOverlayClick>

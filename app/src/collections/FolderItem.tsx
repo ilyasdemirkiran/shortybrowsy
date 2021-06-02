@@ -31,17 +31,17 @@ function FolderItem({folderNode, keys}: FolderItemProps) {
 	return (
 		<NavLink to={to}>
 			<BookmarkItemContainer bg="gray.700" color="gray.50">
-				<BookmarkGridItem colSpan={1}>
-					<AiOutlineFolder size={24}/>
+				<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
+					<BookmarkShortcutKey keys={keys} showIcon={false}/>
 				</BookmarkGridItem>
 				<BookmarkGridItem colSpan={1}>
-					<BookmarkChildrenNumber childrenNumber={folderNode.children?.length}/>
+					<AiOutlineFolder size={24}/>
 				</BookmarkGridItem>
 				<BookmarkGridItem colSpan={3}>
 					<BookmarkTitle title={folderNode.title}/>
 				</BookmarkGridItem>
-				<BookmarkGridItem colSpan={1} color="gray.900" boxShadow="sm" p={1}>
-					<BookmarkShortcutKey keys={keys} showIcon/>
+				<BookmarkGridItem colSpan={1}>
+					<BookmarkChildrenNumber childrenNumber={folderNode.children?.length}/>
 				</BookmarkGridItem>
 			</BookmarkItemContainer>
 		</NavLink>
